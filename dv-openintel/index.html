@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#07111f">
+  <meta name="description" content="DV OpenIntel — diretório pesquisável de ferramentas e fontes abertas para OSINT, pesquisa, verificação e inteligência digital.">
+  <title>DV OpenIntel — OSINT Research Hub</title>
+  <link rel="preconnect" href="https://www.google.com">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="ambient ambient-a"></div>
+  <div class="ambient ambient-b"></div>
+
+  <header class="topbar">
+    <a class="brand" href="#" aria-label="DV OpenIntel">
+      <span class="brand-mark" aria-hidden="true">
+        <svg viewBox="0 0 48 48" role="img"><circle cx="20" cy="20" r="10"></circle><path d="M27.5 27.5 39 39"></path><circle cx="10" cy="10" r="2.5"></circle><circle cx="30" cy="10" r="2.5"></circle><path d="M12 11.5 16.5 16M28 11.5 23.5 16"></path></svg>
+      </span>
+      <span><strong>DV OpenIntel</strong><small>Open Source Intelligence Hub</small></span>
+    </a>
+    <div class="top-actions">
+      <button id="randomBtn" class="icon-btn" type="button" title="Abrir ferramenta aleatória" aria-label="Ferramenta aleatória">↗</button>
+      <button id="themeBtn" class="icon-btn" type="button" title="Alternar tema" aria-label="Alternar tema">◐</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="eyebrow">PESQUISA • VERIFICAÇÃO • INTELIGÊNCIA DIGITAL</div>
+      <h1>Encontre a ferramenta certa<br><span>em segundos.</span></h1>
+      <p>Um índice rápido e pesquisável de recursos OSINT, fontes públicas e ferramentas de investigação digital.</p>
+
+      <div class="search-wrap" id="searchWrap">
+        <span class="search-icon" aria-hidden="true">⌕</span>
+        <input id="searchInput" type="search" autocomplete="off" spellcheck="false" placeholder="Busque por ferramenta, domínio ou categoria..." aria-label="Buscar ferramentas">
+        <kbd>Ctrl K</kbd>
+        <button id="clearSearch" class="clear-search" type="button" aria-label="Limpar busca">×</button>
+      </div>
+      <div class="search-hints">
+        <button data-query="people">Pessoas</button>
+        <button data-query="email">E-mail</button>
+        <button data-query="social">Redes sociais</button>
+        <button data-query="maps">Mapas</button>
+        <button data-query="domain">Domínios/IP</button>
+        <button data-query="image">Imagem</button>
+      </div>
+
+      <div class="metrics" aria-label="Estatísticas do diretório">
+        <div><strong id="toolCount">—</strong><span>recursos</span></div>
+        <div><strong id="categoryCount">—</strong><span>categorias</span></div>
+        <div><strong id="favoriteCount">0</strong><span>favoritos</span></div>
+      </div>
+    </section>
+
+    <section class="workspace">
+      <aside class="sidebar">
+        <div class="sidebar-head"><strong>Categorias</strong><button id="resetFilters" type="button">Limpar</button></div>
+        <button class="category-item active" data-category="__all__"><span class="cat-icon">⌂</span><span>Todas</span><b id="allCount">—</b></button>
+        <button class="category-item" data-category="__favorites__"><span class="cat-icon">★</span><span>Favoritos</span><b id="sideFavCount">0</b></button>
+        <div id="categoryList"></div>
+      </aside>
+
+      <div class="content">
+        <div class="content-head">
+          <div>
+            <div class="result-kicker" id="resultKicker">Carregando catálogo</div>
+            <h2 id="resultTitle">DV OpenIntel</h2>
+            <p id="resultMeta">Obtendo a base pública OSINT4ALL…</p>
+          </div>
+          <label class="sort-control">Ordenar
+            <select id="sortSelect">
+              <option value="source">Original</option>
+              <option value="az">A–Z</option>
+              <option value="category">Categoria</option>
+            </select>
+          </label>
+        </div>
+
+        <div id="loadingState" class="empty-state">
+          <div class="empty-icon">◎</div>
+          <h3>Carregando recursos</h3>
+          <p>A base é processada localmente no seu navegador.</p>
+        </div>
+
+        <div id="emptyState" class="empty-state" hidden>
+          <div class="empty-icon">⌕</div>
+          <h3>Nenhum recurso encontrado</h3>
+          <p>Tente outro termo ou remova os filtros.</p>
+          <button id="emptyReset" type="button">Ver todas as ferramentas</button>
+        </div>
+
+        <div id="errorState" class="empty-state" hidden>
+          <div class="empty-icon">!</div>
+          <h3>Não foi possível carregar o catálogo</h3>
+          <p id="errorMessage">Tente novamente mais tarde.</p>
+          <button id="retryLoad" type="button">Tentar novamente</button>
+        </div>
+
+        <div id="toolGrid" class="tool-grid" hidden></div>
+        <button id="loadMore" class="load-more" type="button" hidden>Carregar mais</button>
+      </div>
+    </section>
+
+    <section class="about-strip">
+      <div><span class="about-icon">◎</span><div><strong>Busca instantânea</strong><p>Filtra localmente por nome, domínio e categoria.</p></div></div>
+      <div><span class="about-icon">★</span><div><strong>Favoritos locais</strong><p>Salvos no seu navegador, sem cadastro.</p></div></div>
+      <div><span class="about-icon">↗</span><div><strong>Base aberta</strong><p>Catálogo carregado da fonte pública OSINT4ALL.</p></div></div>
+    </section>
+  </main>
+
+  <footer>
+    <div><strong>DV OpenIntel</strong><span>Uma ferramenta de deivisonviana.com</span></div>
+    <p>Diretório para pesquisa legítima em fontes abertas. Respeite leis, termos de uso, privacidade e autorizações aplicáveis.</p>
+    <small>Base de recursos: OSINT4ALL (CC0). Interface, busca e organização: DV OpenIntel (MIT).</small>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
